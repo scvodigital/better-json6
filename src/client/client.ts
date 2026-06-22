@@ -296,8 +296,8 @@ async function startClientWithParticipants(_context: ExtensionContext, languageP
 		synchronize: {
 			// Synchronize the setting section 'json5' to the server
 			configurationSection: ['json5', 'http'],
-			// Watch json5 and json files in the workspace for schema changes
-			fileEvents: [workspace.createFileSystemWatcher('**/*.json5'), workspace.createFileSystemWatcher('**/*.json')]
+			// Watch json5, json6, and json files in the workspace for schema changes
+			fileEvents: [workspace.createFileSystemWatcher('**/*.json5'), workspace.createFileSystemWatcher('**/*.json6'), workspace.createFileSystemWatcher('**/*.json')]
 		},
 		middleware: {
 			workspace: {

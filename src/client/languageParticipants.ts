@@ -38,8 +38,10 @@ export function getLanguageParticipants(): LanguageParticipants {
 
 		languages = new Set();
 		languages.add('json5');
+		languages.add('json6');
 		comments = new Set();
 		comments.add('json5');
+		comments.add('json6');
 
 		for (const extension of extensions.all) {
 			const jsonLanguageParticipants = extension.packageJSON?.contributes?.jsonLanguageParticipants as LanguageParticipantContribution[];

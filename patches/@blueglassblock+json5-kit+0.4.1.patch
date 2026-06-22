@@ -1,0 +1,65 @@
+diff --git a/node_modules/@blueglassblock/json5-kit/lib/esm/impl/scanner.js b/node_modules/@blueglassblock/json5-kit/lib/esm/impl/scanner.js
+index a011ddd..ed96fe2 100644
+--- a/node_modules/@blueglassblock/json5-kit/lib/esm/impl/scanner.js
++++ b/node_modules/@blueglassblock/json5-kit/lib/esm/impl/scanner.js
+@@ -82,6 +82,8 @@ export function createScanner(text, ignoreTrivia = false) {
+         return text.substring(start, end);
+     }
+     function scanStringLike(breakCondition, skipEnd = true, reportEOS = true) {
++        const quoteChar = text.charCodeAt(pos - 1);
++        const isMultiline = quoteChar === 34 /* CharacterCodes.doubleQuote */ || quoteChar === 96 /* backtick */;
+         let result = '', start = pos;
+         while (true) {
+             if (pos >= len) {
+@@ -123,6 +125,9 @@ export function createScanner(text, ignoreTrivia = false) {
+                     case 34 /* CharacterCodes.doubleQuote */:
+                         result += '"';
+                         break;
++                    case 96 /* backtick */:
++                        result += '`';
++                        break;
+                     case 92 /* CharacterCodes.backslash */:
+                         result += '\\';
+                         break;
+@@ -163,9 +168,22 @@ export function createScanner(text, ignoreTrivia = false) {
+             }
+             if (ch >= 0 && ch <= 0x1f) {
+                 if (isLineBreak(ch)) {
+-                    result += text.substring(start, pos);
+-                    scanError = 2 /* ScanError.UnexpectedEndOfString */;
+-                    break;
++                    if (isMultiline) {
++                        if (ch === 13 /* CharacterCodes.carriageReturn */ && text.charCodeAt(pos + 1) === 10 /* CharacterCodes.lineFeed */) {
++                            pos++;
++                        }
++                        lineNumber++;
++                        pos++;
++                        tokenLineStartOffset = pos;
++                        result += text.substring(start, pos);
++                        start = pos;
++                        continue;
++                    }
++                    else {
++                        result += text.substring(start, pos);
++                        scanError = 2 /* ScanError.UnexpectedEndOfString */;
++                        break;
++                    }
+                 }
+                 else {
+                     scanError = 6 /* ScanError.InvalidCharacter */;
+@@ -233,6 +251,7 @@ export function createScanner(text, ignoreTrivia = false) {
+             // strings
+             case 39 /* CharacterCodes.singleQuote */:
+             case 34 /* CharacterCodes.doubleQuote */:
++            case 96 /* CharacterCodes.backtick (JSON6) */:
+                 pos++;
+                 value = scanStringLike((ch) => ch === code);
+                 return token = 10 /* SyntaxKind.StringLiteral */;
+@@ -384,6 +403,7 @@ export function createScanner(text, ignoreTrivia = false) {
+             case 123 /* CharacterCodes.openBrace */:
+             case 91 /* CharacterCodes.openBracket */:
+             case 34 /* CharacterCodes.doubleQuote */:
++            case 96 /* CharacterCodes.backtick */:
+             case 58 /* CharacterCodes.colon */:
+             case 44 /* CharacterCodes.comma */:
+             case 47 /* CharacterCodes.slash */:

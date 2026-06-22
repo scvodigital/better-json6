@@ -1,0 +1,14 @@
+diff --git a/node_modules/@blueglassblock/json5-languageservice/lib/esm/parser/jsonParser.js b/node_modules/@blueglassblock/json5-languageservice/lib/esm/parser/jsonParser.js
+index 9594ccf..4d428c8 100644
+--- a/node_modules/@blueglassblock/json5-languageservice/lib/esm/parser/jsonParser.js
++++ b/node_modules/@blueglassblock/json5-languageservice/lib/esm/parser/jsonParser.js
+@@ -1287,7 +1287,8 @@ export function parse(textDocument, config) {
+         }
+         const node = new StringASTNodeImpl(parent, scanner.getTokenOffset());
+         node.value = scanner.getTokenValue();
+-        node.quote = text.charAt(node.offset) === '\'' ? 'single' : 'double';
++        const firstChar = text.charAt(node.offset);
++        node.quote = firstChar === '\'' ? 'single' : (firstChar === '`' ? 'backtick' : 'double');
+         return _finalize(node, true);
+     }
+     function _parseIdentifier(parent) {

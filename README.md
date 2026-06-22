@@ -1,10 +1,16 @@
 <div align="center">
 
-# better-json5 
+# better-json6
 
-> JSON5 support for Visual Studio Code, done right ⚡
+> JSON5 and JSON6 support for Visual Studio Code, done right ⚡
 
 </div>
+
+## This is a shameless fork
+
+**Based on the excellent work by [BlueGlassBlock](https://github.com/BlueGlassBlock/better-json5) and their `better-json5` extension.**
+
+We needed multi-line strings using double-quotes and backticks so I forked it and did a hack job of implementing it. All praise goes to them.
 
 Syntax highlighting, validation, formatting, and JSON schema based intellisense / completion for JSON5 files in Visual Studio Code.
 
