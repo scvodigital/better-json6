@@ -1,0 +1,89 @@
+{
+  // js tests
+  js_backtick: /*js*/`
+    function test () {
+      return;
+    }
+  `,
+  js_doublequote: /*js*/"
+    function test () {
+      return;
+    }
+  ",
+  js_singlequote: /*js*/'
+    function test () {
+      return;
+    }
+  ',
+
+  // javascript tests
+  javascript_backtick: /*javascript*/`
+    function test () {
+      return;
+    }
+  `,
+  javascript_doublequote: /*javascript*/"
+    function test () {
+      return;
+    }
+  ",
+  javascript_singlequote: /*javascript*/'
+    function test () {
+      return;
+    }
+  ',
+
+  // css tests
+  css_backtick: /*css*/`
+    div {
+      width: 100%;
+    }
+  `,
+  css_doublequote: /*css*/"
+    div {
+      width: 100%;
+    }
+  ",
+  css_singlequote: /*css*/'
+    div {
+      width: 100%;
+    }
+  ',
+
+  // sql tests
+  sql_backtick: /*sql*/`
+    SELECT *
+    FROM test
+    WHERE a = ?
+  `,
+  sql_doublequote: /*sql*/"
+    SELECT *
+    FROM test
+    WHERE a = ?
+  ",
+  sql_singlequote: /*sql*/'
+    SELECT *
+    FROM test
+    WHERE a = ?
+  ',
+
+  // html tests
+  html_backtick: /*html*/`
+    <div class="test">
+      <!-- test comment -->
+      <script type="application/javascript">
+        alert('test');
+      </script>
+    </div>
+  `,
+  html_doublequote: /*html*/"
+    <div class=\"test\">
+      <!-- test comment -->
+    </div>
+  ",
+  html_singlequote: /*html*/'
+    <div class=\'test\'>
+      <!-- test comment -->
+    </div>
+  '
+}

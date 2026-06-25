@@ -294,6 +294,9 @@
 					"include": "#embeddedJs"
 				},
 				{
+					"include": "#embeddedCss"
+				},
+				{
 					"include": "#constant"
 				},
 				{
@@ -542,6 +545,82 @@
 					"patterns": [
 						{
 							"include": "source.js"
+						}
+					]
+				}
+			]
+		},
+		"embeddedCss": {
+			"patterns": [
+				{
+					"begin": "(?i)(/\\*\\s*css\\s*\\*/)\\s*(')",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)'",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.single.json5 string.quoted.single.json.five",
+					"contentName": "source.css",
+					"patterns": [
+						{
+							"include": "source.css"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*css\\s*\\*/)\\s*(\")",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)\"",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.double.json5 string.quoted.double.json.five",
+					"contentName": "source.css",
+					"patterns": [
+						{
+							"include": "source.css"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*css\\s*\\*/)\\s*(`)",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)`",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.template.json5 string.quoted.template.json.five",
+					"contentName": "source.css",
+					"patterns": [
+						{
+							"include": "source.css"
 						}
 					]
 				}

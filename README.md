@@ -12,7 +12,7 @@
 
 We needed multi-line strings using double-quotes and backticks so I forked it and did a hack job of implementing it. All praise goes to them.
 
-Syntax highlighting, validation, formatting, and JSON schema based intellisense / completion for JSON5 files in Visual Studio Code.
+Syntax highlighting, validation, formatting, and JSON schema based intellisense / completion for JSON6 files in Visual Studio Code.
 
 ## Features
 
