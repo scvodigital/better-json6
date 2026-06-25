@@ -285,6 +285,15 @@
 			"comment": "the 'value' diagram at http://json.org",
 			"patterns": [
 				{
+					"include": "#embeddedHtml"
+				},
+				{
+					"include": "#embeddedSql"
+				},
+				{
+					"include": "#embeddedJs"
+				},
+				{
 					"include": "#constant"
 				},
 				{
@@ -307,6 +316,234 @@
 				},
 				{
 					"include": "#object"
+				}
+			]
+		},
+		"embeddedHtml": {
+			"patterns": [
+				{
+					"begin": "(?i)(/\\*\\s*html\\s*\\*/)\\s*(')",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)'",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.single.json5 string.quoted.single.json.five",
+					"contentName": "text.html.basic",
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*html\\s*\\*/)\\s*(\")",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)\"",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.double.json5 string.quoted.double.json.five",
+					"contentName": "text.html.basic",
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*html\\s*\\*/)\\s*(`)",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)`",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.template.json5 string.quoted.template.json.five",
+					"contentName": "text.html.basic",
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			]
+		},
+		"embeddedSql": {
+			"patterns": [
+				{
+					"begin": "(?i)(/\\*\\s*sql\\s*\\*/)\\s*(')",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)'",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.single.json5 string.quoted.single.json.five",
+					"contentName": "source.sql",
+					"patterns": [
+						{
+							"include": "source.sql"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*sql\\s*\\*/)\\s*(\")",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)\"",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.double.json5 string.quoted.double.json.five",
+					"contentName": "source.sql",
+					"patterns": [
+						{
+							"include": "source.sql"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*sql\\s*\\*/)\\s*(`)",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)`",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.template.json5 string.quoted.template.json.five",
+					"contentName": "source.sql",
+					"patterns": [
+						{
+							"include": "source.sql"
+						}
+					]
+				}
+			]
+		},
+		"embeddedJs": {
+			"patterns": [
+				{
+					"begin": "(?i)(/\\*\\s*(?:js|javascript)\\s*\\*/)\\s*(')",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)'",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.single.json5 string.quoted.single.json.five",
+					"contentName": "source.js",
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*(?:js|javascript)\\s*\\*/)\\s*(\")",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)\"",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.double.json5 string.quoted.double.json.five",
+					"contentName": "source.js",
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				},
+				{
+					"begin": "(?i)(/\\*\\s*(?:js|javascript)\\s*\\*/)\\s*(`)",
+					"beginCaptures": {
+						"1": {
+							"name": "comment.block.json5 comment.block.json.five"
+						},
+						"2": {
+							"name": "punctuation.definition.string.begin.json5 punctuation.definition.string.begin.json.five"
+						}
+					},
+					"end": "(?<!\\\\)`",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.json5 punctuation.definition.string.end.json.five"
+						}
+					},
+					"name": "string.quoted.template.json5 string.quoted.template.json.five",
+					"contentName": "source.js",
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
 				}
 			]
 		},

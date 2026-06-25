@@ -7,7 +7,7 @@ index a011ddd..ed96fe2 100644
      }
      function scanStringLike(breakCondition, skipEnd = true, reportEOS = true) {
 +        const quoteChar = text.charCodeAt(pos - 1);
-+        const isMultiline = quoteChar === 34 /* CharacterCodes.doubleQuote */ || quoteChar === 96 /* backtick */;
++        const isMultiline = quoteChar === 34 /* CharacterCodes.doubleQuote */ || quoteChar === 39 /* CharacterCodes.singleQuote */ || quoteChar === 96 /* backtick */;
          let result = '', start = pos;
          while (true) {
              if (pos >= len) {

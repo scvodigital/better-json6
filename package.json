@@ -58,7 +58,12 @@
       {
         "language": "json5",
         "scopeName": "source.json5",
-        "path": "./syntaxes/json5.tmLanguage.json"
+        "path": "./syntaxes/json5.tmLanguage.json",
+        "embeddedLanguages": {
+          "text.html.basic": "html",
+          "source.sql": "sql",
+          "source.js": "javascript"
+        }
       }
     ],
     "configuration": {

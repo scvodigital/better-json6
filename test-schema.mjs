@@ -58,6 +58,21 @@ line 2\`,
   assert.strictEqual(diagnostics1.length, 0, "Valid document should have 0 diagnostics");
   console.log('✓ Successfully validated JSON6 document against JSON Schema.');
 
+  // Test Document 1b: Valid JSON6 with single-quoted multi-line string matching schema
+  const validDocTextSingle = `{
+    message: 'line 1
+line 2',
+    count: 42
+  }`;
+  
+  const doc1b = TextDocument.create("file:///myfile.json6", "json5", 1, validDocTextSingle);
+  const jsonDoc1b = languageService.parseJSONDocument(doc1b);
+  const diagnostics1b = await languageService.doValidation(doc1b, jsonDoc1b, { schemaValidation: "error" });
+  
+  console.log('Diagnostics for valid single-quoted multiline document:', JSON.stringify(diagnostics1b));
+  assert.strictEqual(diagnostics1b.length, 0, "Valid single-quoted multiline document should have 0 diagnostics");
+  console.log('✓ Successfully validated single-quoted multiline JSON6 document against JSON Schema.');
+
   // Test Document 2: Invalid JSON6 (violates schema constraints)
   const invalidDocText = `{
     message: "abc", // minLength is 5, "abc" is only 3

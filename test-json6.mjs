@@ -33,6 +33,31 @@ line 2\`
   console.log('Value:', JSON.stringify(parsedBacktickEscaped));
   assert.deepStrictEqual(parsedBacktickEscaped, { key3: 'line 1`line 2' });
 
+  // Test 4: Multi-line strings using single quotes (JSON6)
+  const textSingle = `{
+    'key4': 'line 1
+line 2'
+  }`;
+  const parsedSingle = parse(textSingle);
+  console.log('✓ Successfully parsed single-quoted multi-line string.');
+  console.log('Value:', JSON.stringify(parsedSingle));
+  assert.deepStrictEqual(parsedSingle, { key4: 'line 1\nline 2' });
+
+  // Test 5: Commented inline strings (HTML, SQL, JS)
+  const textCommented = `{
+    htmlCode: /*html*/\`<div class="test">Hello</div>\`,
+    sqlQuery: /*sql*/"SELECT * FROM users",
+    jsScript: /*javascript*/'const x = 42;'
+  }`;
+  const parsedCommented = parse(textCommented);
+  console.log('✓ Successfully parsed inline commented strings.');
+  console.log('Value:', JSON.stringify(parsedCommented));
+  assert.deepStrictEqual(parsedCommented, {
+    htmlCode: '<div class="test">Hello</div>',
+    sqlQuery: 'SELECT * FROM users',
+    jsScript: 'const x = 42;'
+  });
+
   console.log('\nAll tests passed successfully! JSON6 features are fully supported.');
 } catch (error) {
   console.error('\nTest failed:', error);
